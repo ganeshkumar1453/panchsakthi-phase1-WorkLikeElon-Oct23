@@ -75,4 +75,10 @@ public class IndividualProjectTaskDetails implements Serializable {
         this.workAndBreakTime = workAndBreakTime;
     }
 
+    @Override
+    public String toString() {
+        return "IndividualProjectTaskDetails [serialNo=" + serialNo + ", name=" + name + ", description=" + description + ", priority=" + priority
+                        + ", status=" + status + ", workAndBreakTime=" + workAndBreakTime + "]";
+    }
+
 }

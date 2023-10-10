@@ -3,6 +3,7 @@ package com.example.worklikeelon.facade;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +28,14 @@ public class ProjectTaskDetailsFacade {
 
     public ResponseEntity<Object> createOrUpdateProjectTaskDetails(String data) throws ProjectTaskDetailsException {
         Gson gson = new GsonBuilder().create();
+        System.out.println("data --> " + data);
         ProjectTaskDetailsPojo projectTaskDetailsPojo = gson.fromJson(data, ProjectTaskDetailsPojo.class);
-        List<IndividualProjectTaskDetails> connectionUrlDetails = projectTaskDetailsPojo.getIndividualProjectTaskDetailsList();
-        if (null == connectionUrlDetails || connectionUrlDetails.isEmpty()) {
+        System.out.println("projectTaskDetailsPojo --> " + projectTaskDetailsPojo);
+        if (Objects.isNull(projectTaskDetailsPojo)) {
+            throw new ProjectTaskDetailsException("ProjectTaskDetails is empty or invalid json request");
+        }
+        List<IndividualProjectTaskDetails> individualProjectTaskDetailsList = projectTaskDetailsPojo.getIndividualProjectTaskDetailsList();
+        if (null == individualProjectTaskDetailsList || individualProjectTaskDetailsList.isEmpty()) {
             throw new ProjectTaskDetailsException("ProjectTaskDetails is empty or invalid json request");
         }
         try {

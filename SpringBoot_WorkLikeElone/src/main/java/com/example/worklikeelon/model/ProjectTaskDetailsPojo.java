@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 
+@JsonInclude(Include.NON_NULL)
 public class ProjectTaskDetailsPojo implements Serializable {
 
     /**
@@ -16,7 +17,7 @@ public class ProjectTaskDetailsPojo implements Serializable {
 
     @JsonInclude(Include.NON_NULL)
     private String status;
-
+    @JsonInclude(Include.NON_NULL)
     private List<IndividualProjectTaskDetails> individualProjectTaskDetailsList;
 
     public List<IndividualProjectTaskDetails> getIndividualProjectTaskDetailsList() {
@@ -33,6 +34,11 @@ public class ProjectTaskDetailsPojo implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "ProjectTaskDetailsPojo [status=" + status + ", individualProjectTaskDetailsList=" + individualProjectTaskDetailsList + "]";
     }
 
 }
