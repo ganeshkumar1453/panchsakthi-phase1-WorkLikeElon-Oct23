@@ -1,0 +1,11 @@
+<div class="container">
+        <div class="">
+            <img class="d-block w-100" src="../../assets/images/bg2.png" alt="First slide">
+            <div class="carousel-caption d-none d-md-block" style="margin-bottom: 130px;padding-right: 130px;">
+                <p> <q>{{quoteText}}</q>
+                <cite style="display: block; text-align: right;"> - {{quoteAuthor}}</cite>
+                </p>
+              </div>
+          </div>
+      <input class="btn btn-outline-success rounded" type="button" value="Refresh" [disabled]="!this.quotes.length" (click)="generateRandomQuote()">
+      </div> 
