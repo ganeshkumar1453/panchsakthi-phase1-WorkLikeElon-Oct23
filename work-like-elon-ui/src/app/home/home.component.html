@@ -1,6 +1,6 @@
-<div class="container-fluid py-3">
+<div class="container-fluid py-3 justify-content-center">
   <button class="btn btn-sm btn-outline-primary" (click)="open(demoModal)">Add Task</button>
-    <div class="row my-3">
+    <!-- <div class="row my-3">
       <div class="col">
         <label for="exampleFormControlInput1" class="form-label">Email address</label>
         <input type="email" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="name@example.com">
@@ -22,28 +22,62 @@
     </div>
     <div class="row my-3">
       <div class="col">
-        <!-- <button class="btn btn-sm btn-outline-primary" (click)="open(demoModal)">Launch demo modal</button> -->
+        <button class="btn btn-sm btn-outline-primary" (click)="open(demoModal)">Launch demo modal</button>
       </div>
+    </div> -->
+    <div class="card">
+      <div class="card-header">
+        TODOs
+      </div>
+      <div *ngIf="list.length">
+        <ul class="list-group list-group-flush" *ngFor="let pack of list">
+          <li class="list-group-item">{{pack.name}}</li>
+        </ul>
+      </div>
+      <h3 *ngIf="!list.length">Add Tasks to Display</h3>
     </div>
   </div>
 
   <ng-template #demoModal let-modal>
     <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+      <h4 class="modal-title" id="modal-basic-title">Add Task</h4>
       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
     </div>
     <div class="modal-body">
       <form>
         <div class="form-group">
-          <label for="dateOfBirth">Date of birth</label>
+          <label for="taskName">Task Name</label>
           <div class="input-group">
-            <input id="dateOfBirth" name="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" ngbDatepicker #dp="ngbDatepicker">
-            <button type="button" class="btn btn-outline-secondary bi bi-calendar" (click)="dp.toggle()"></button>
+            <input id="taskName" type="text" name="taskName" class="form-control" placeholder="Eg: Go to bed" [(ngModel)]="user.name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="totalTime">Total Time (in mins)</label>
+          <div class="input-group">
+            <input id="totalTime" name="totalTime" class="form-control" placeholder="120" [(ngModel)]="user.totalTime">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="effectiveTime">Effective Time</label>
+          <div class="input-group">
+            <input id="effectiveTime" name="effectiveTime" class="form-control" placeholder="25" [(ngModel)]="user.effectiveTime">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="shortBT">Short Break Time</label>
+          <div class="input-group">
+            <input id="shortBT" name="shortBT" class="form-control" placeholder="5" [(ngModel)]="user.shortBT">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="longBT">Long Break Time</label>
+          <div class="input-group">
+            <input id="longBT" name="longBT" class="form-control" placeholder="15" [(ngModel)]="user.longBT">
           </div>
         </div>
       </form>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+      <button type="button" class="btn btn-outline-dark" (click)="save(modal)">Save</button>
     </div>
   </ng-template>
