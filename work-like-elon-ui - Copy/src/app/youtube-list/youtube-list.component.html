@@ -1,0 +1,26 @@
+<div class="container">
+    <h1>youtube list Compenent</h1>
+<div class="">
+    <div class="form-group">
+        <label for="searchStr" class="form-label text-secondary">Search</label>
+        <input type="text" name="searchStr" class="form-control form-control-sm" id="searchStr" #search placeholder="Search Here">    
+    </div>
+    <input type="submit" value="submit" class="my-3 btn btn-outline-secondary" (click)="fetchVideoList(search.value)">    
+</div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-sm-6 g-5" *ngFor="let list of videoList">
+            <div class="card border rounded p-3">
+                <youtube-player
+                [videoId]="list"
+                suggestedQuality="highres"
+                [height]="250"
+                [width]="565"
+                ></youtube-player>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
